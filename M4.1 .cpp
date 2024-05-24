@@ -2,7 +2,7 @@
 #include <stack>
 #include <string>
 
-int minReplacementsForBalancedString(const std::string& str) {
+int minReplacementsForBalancedString(const string& str) {
     std::stack<char> stk;
     int replacements = 0;
 
