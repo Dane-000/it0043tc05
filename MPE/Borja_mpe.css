@@ -13,13 +13,14 @@ body{
  
 .container{
     margin: 1rem;
-    padding: 20px;
+    padding: 1rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     text-align: center;
-    background-image: url(background.png);
-   
+    background-image: url("background.png");
+    gap: 10px; 
+    background-size: cover;
 }
  
 .Box{
