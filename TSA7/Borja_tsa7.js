@@ -1,43 +1,92 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const flexContainer = document.getElementById('flexContainer');
-    const resetBtn = document.getElementById('resetBtn');
-    const gapInput = document.getElementById('gap');
-    const flexDirectionSelect = document.getElementById('flexDirection');
-    const justifyContentSelect = document.getElementById('justifyContent');
-    const alignItemsSelect = document.getElementById('alignItems');
-    const flexGrow1Input = document.getElementById('flexGrow1');
-    const flexGrow2Input = document.getElementById('flexGrow2');
-    const flexGrow3Input = document.getElementById('flexGrow3');
-    const boxes = [
-        document.getElementById('box1'),
-        document.getElementById('box2'),
-        document.getElementById('box3')
-    ];
-    function updateFlexbox() {
-        flexContainer.style.gap = `${gapInput.value}px`;
-        flexContainer.style.flexDirection = flexDirectionSelect.value;
-        flexContainer.style.justifyContent = justifyContentSelect.value;
-        flexContainer.style.alignItems = alignItemsSelect.value;
-        boxes[0].style.flexGrow = flexGrow1Input.value;
-        boxes[1].style.flexGrow = flexGrow2Input.value;
-        boxes[2].style.flexGrow = flexGrow3Input.value;
-    }
-    gapInput.addEventListener('input', updateFlexbox);
-    flexDirectionSelect.addEventListener('change', updateFlexbox);
-    justifyContentSelect.addEventListener('change', updateFlexbox);
-    alignItemsSelect.addEventListener('change', updateFlexbox);
-    flexGrow1Input.addEventListener('input', updateFlexbox);
-    flexGrow2Input.addEventListener('input', updateFlexbox);
-    flexGrow3Input.addEventListener('input', updateFlexbox);
-    resetBtn.addEventListener('click', () => {
-        gapInput.value = 0;
-        flexDirectionSelect.value = 'row';
-        justifyContentSelect.value = 'flex-start';
-        alignItemsSelect.value = 'stretch';
-        flexGrow1Input.value = 0;
-        flexGrow2Input.value = 0;
-        flexGrow3Input.value = 0;
-        updateFlexbox();
-    });
-    updateFlexbox(); 
- });
+let container = document.getElementById("flex-container");
+let grow;
+
+function Reset() {
+  container.style.flexDirection = "row";
+  container.style.justifyContent = "start";
+  container.style.alignItems = "stretch";
+  container.style.gap = "0px";
+  document.getElementById("gap").value = 0;
+
+  document.getElementById("grow1").value = 0;
+  document.getElementById("grow2").value = 0;
+  document.getElementById("grow3").value = 0;
+
+  FlexGrow(1);
+  FlexGrow(2);
+  FlexGrow(3);
+}
+
+function UpdateGap() {
+  const gap = document.getElementById("gap").value;
+  container.style.gap = `${gap}px`;
+}
+
+function Direction(x) {
+  if (x == 1) {
+    container.style.flexDirection = "row";
+  } else if (x == 2) {
+    container.style.flexDirection = "column";
+  }
+}
+
+function JustifyContent(x) {
+  switch (x) {
+    case 1:
+      container.style.justifyContent = "start";
+      break;
+    case 2:
+      container.style.justifyContent = "center";
+      break;
+    case 3:
+      container.style.justifyContent = "end";
+      break;
+    case 4:
+      container.style.justifyContent = "space-between";
+      break;
+    case 5:
+      container.style.justifyContent = "space-around";
+      break;
+    case 6:
+      container.style.justifyContent = "space-evenly";
+  }
+}
+
+function AlignItems(x) {
+  switch (x) {
+    case 1:
+      container.style.alignItems = "start";
+      break;
+    case 2:
+      container.style.alignItems = "center";
+      break;
+    case 3:
+      container.style.alignItems = "end";
+  }
+}
+
+function FlexGrow(number) {
+  const grow = document.getElementById(`grow${number}`).value;
+  document.getElementById(`box${number}`).style.flexGrow = grow;
+}
+
+function UpdateGrow(x) {
+  switch (x) {
+    case 1:
+      document.getElementById("box1").style.flexGrow++;
+      document.getElementById("box2").style.flexGrow++;
+      document.getElementById("box3").style.flexGrow++;
+      document.getElementById("grow1").value++;
+      document.getElementById("grow2").value++;
+      document.getElementById("grow3").value++;
+      break;
+    case 2:
+      document.getElementById("box1").style.flexGrow = 0;
+      document.getElementById("box2").style.flexGrow = 0;
+      document.getElementById("box3").style.flexGrow = 0;
+      document.getElementById("grow1").value = 0;
+      document.getElementById("grow2").value = 0;
+      document.getElementById("grow3").value = 0;
+      break;
+  }
+}
