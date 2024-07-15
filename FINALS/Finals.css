@@ -233,7 +233,7 @@ section {
 
 .projects-box {
     display: flex;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     place-items: center;
     margin: 5rem 0;
     gap: 3rem;
@@ -416,6 +416,9 @@ section {
 
     .about-img {
         width: 52vw;
+    }
+    .projects-box{
+        flex-wrap:wrap;
     }
 
     .contact form {
